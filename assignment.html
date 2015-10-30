@@ -11,34 +11,138 @@
 	//============================================================
 
   //global variables go here
+  	var krabsX = 0;
+	var krabsY = 50;
+	var speed = 5;
+	var moneyX = 0;
+	var moneyY = 50;
+	var speed = 5;
+	var bg;
+	var bg1;
+	var cry;
 
-  //only use this function if you need to load images
-  //remember you will need to use Anvil to run your local server
-	// function preload(){
+	var ghost; 
 
-	// }
+	function preload(){
 
+		krabs = loadImage("../assets/krabs.png");
+		money = loadImage("../assets/money.png");
+		house = loadImage("../assets/house.png");
+		bg = loadImage("../assets/bg.jpg");
+		bg1 = loadImage("../assets/bg1.jpg");
+		cry = loadImage("../assets/cry.png");
 
-	//Set up your canvas
+	}
+
 	function setup() {
-		createCanvas(windowWidth, windowHeight);
-
+		createCanvas(2500, 2500);
+		imageMode(CENTER);
+		noCursor();
 	}
 
-
-	//Draw your story
 	function draw() {
+		background(bg);
 
+		image(house, 820,490);
+
+
+	function mouseClicked(){
+		if (value == 0) {
+			value = 255;
+		} else {
+			value = 0;
+	}	
+}
+
+		image(money,mouseX,mouseY);
+		//if the ghost is to the left of our mouse
+		if (krabsX < mouseX){
+			krabsX +=speed;
+		}
+
+		//if the ghost is to the right of our mouse
+		if (krabsX > mouseX){
+			krabsX-=speed;
+		}
+
+		//if the ghost is above our mouse
+		if (krabsY < mouseY){
+			krabsY+=speed;
+		}
+
+		//if the ghost is below our mouse
+		if (krabsY > mouseY){
+			krabsY-=speed;
+		}
+
+		//
+		//if the ghost is to the left of our mouse
+		if (moneyX < mouseX){
+			moneyX +=speed;
+		}
+
+		//if the ghost is to the right of our mouse
+		if (moneyX > mouseX){
+			moneyX-=speed;
+		}
+
+		//if the ghost is above our mouse
+		if (moneyY < mouseY){
+			moneyY+=speed;
+		}
+
+		//if the ghost is below our mouse
+		if (moneyY > mouseY){
+			moneyY-=speed;
+		}
+
+		
+
+		//draw the ghost using the position variables
+		image(krabs, krabsX, krabsY);
+		
+
+		//add some text explaining how to use the keyboard
+		fill("white");
+		text("Mr.Krabs is hungry for money! Press ENTER key to make Mr.Krabs rich!",50,50);
 	}
 
-	//add your functions
+	//Keys you can detect with p5 are:
+	//BACKSPACE, DELETE, ENTER, RETURN, TAB, 
+	//ESCAPE, SHIFT, CONTROL, OPTION, ALT, 
+	//UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW. 
+	function keyPressed() {
 
+		//change the background color when the shift key is pressed
+		//and save that state to the bg variable, which we will used 
+		//to fill in the background color in the draw() function
+	  if(keyCode === ENTER){
+	  	//we have to check what state its already in first
+	  	//before whe know what state to switch it to
+	  	if(bg == bg){
+	  		bg = bg1;
+	  	} else if (bg==bg){
+	  		bg = bg1;
+	  	}
+	  if(keyCode ===ESCAPE
+	  	){
+	  	if(bg1 == bg1){
+	  		bg1 = cry;
+	  	} else if (bg1==bg1){
+	  		bg1 = cry;
+	  	}
+	  	}
+	  }
+	  }
 
-
+	
 
 	</script>
 </head>
 
 <body>
 </body>
-</html>
+</html>  
+	  
+	
+
